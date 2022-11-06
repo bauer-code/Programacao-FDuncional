@@ -7,12 +7,12 @@ data = infile.read()
 infile.close()
 virgula = re.sub(",", " ", data)
 
-#print(virgula)
-
+#se o arquivo de entrada estiver com virgulas, converte para espaco para leitura dos dados numericos
 file1 = open("input.dat","w")
 file1.write(virgula)
 file1.close()
 
+# x e y em arrays
 x, y= loadtxt('input.dat', unpack=True)
 
 def fibonacci(n):
@@ -23,13 +23,25 @@ def fibonacci(n):
 
 
 for i in range(0, len(x)):
-  #print(math.factorial(x[i]))
+  
   x[i] = fibonacci(x[i])
 
 for i in range(0, len(y)):
-  #print(math.factorial(y[i]))
+
   y[i] = math.factorial(y[i])
 
-   
-DataSet = column_stack((x,y))
-savetxt('output.dat', DataSet)
+
+file2 = open("output.dat","w")
+
+#Esse loop posiciona os dados para ficarem de acordo com o enunciado do projeto
+for i in range(0, len(x)):
+
+  z1 = str(x[i])
+  z2 = str(y[i])
+  n = str(i+1)
+
+  array1 = "Linha " + n + ": Fib("+ "x" +")=" + z1 + " " + "Fact("+ "y" +")=" + z2 + "\n"
+  file2.write(array1)
+
+
+file2.close()
