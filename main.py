@@ -30,5 +30,6 @@ for i in range(0, len(y)):
   #print(math.factorial(y[i]))
   y[i] = math.factorial(y[i])
 
+   
 DataSet = column_stack((x,y))
 savetxt('output.dat', DataSet)
